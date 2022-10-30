@@ -16,7 +16,7 @@ public class UserDao {
     private String password;
     
     @Column
-    private long noice;
+    private long nonce;
     
     public long getId() {
 		return id;
@@ -26,12 +26,14 @@ public class UserDao {
 		this.id = id;
 	}
 
-	public long getNoice() {
-		return noice;
+   
+
+	public long getNonce() {
+		return nonce;
 	}
 
-	public void setNoice(long noice) {
-		this.noice = noice;
+	public void setNonce(long nonce) {
+		this.nonce = nonce;
 	}
 
 	public String getUsername() {
@@ -42,13 +44,7 @@ public class UserDao {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
 }
 

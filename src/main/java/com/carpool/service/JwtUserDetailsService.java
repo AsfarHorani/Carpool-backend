@@ -28,7 +28,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException("User not found with username: " + username);
 		}
-		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), Long.toString(user.getNonce()),
 				new ArrayList<>());
 	}
 
@@ -37,9 +37,8 @@ public class JwtUserDetailsService implements UserDetailsService {
 		Random rand = new Random();
         double n = Math.random()*(999999-100000+1)+100000;
         long noice = Double.doubleToLongBits(n);
-		newUser.setNoice(noice);
-		newUser.setUsername(user.getUsername());
-		newUser.setPassword(user.getPassword());
+		newUser.setNonce(noice);
+		newUser.setUsername(user.getAddress());
 		return userDao.save(newUser);	
 	}
 }

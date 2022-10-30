@@ -13,5 +13,6 @@
 /home/azee/Springboot/Carpool-backend/src/main/java/com/carpool/dto/JwtResponse.java
 /home/azee/Springboot/Carpool-backend/src/main/java/com/carpool/SpringBootJwtApplication.java
 /home/azee/Springboot/Carpool-backend/src/main/java/com/carpool/config/WebSecurityConfig.java
+/home/azee/Springboot/Carpool-backend/src/main/java/com/carpool/swaggerConfig/SwaggerConfig.java
 /home/azee/Springboot/Carpool-backend/src/main/java/com/carpool/config/JwtRequestFilter.java
 /home/azee/Springboot/Carpool-backend/src/main/java/com/carpool/config/JwtTokenUtil.java
