@@ -4,8 +4,9 @@ import com.carpool.config.JwtTokenUtil;
 import com.carpool.dto.JwtRequest;
 import com.carpool.dto.JwtResponse;
 import com.carpool.dto.UserDto;
+import com.carpool.dto.UserDtoResponse;
 import com.carpool.service.JwtUserDetailsService;
-
+import com.carpool.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,10 +20,10 @@ import org.web3j.crypto.Sign;
 import org.web3j.utils.Numeric;
 @RestController
 @CrossOrigin
-public class JwtAuthenticationController {
+public class Auth {
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
+//	@Autowired
+//	private AuthenticationManager authenticationManager;
 
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
@@ -46,8 +47,12 @@ public class JwtAuthenticationController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResponseEntity<?> saveUser(@RequestBody UserDto user) throws Exception {
-		return ResponseEntity.ok(userDetailsService.save(user));
+	public ResponseEntity<?> saveUser(@RequestBody UserDto userdto) throws Exception {
+		User user = userDetailsService.save(userdto);
+		UserDtoResponse udr = new UserDtoResponse();
+		udr.setId(user.getId());
+		udr.setAddress(user.getUsername());
+		return ResponseEntity.ok(udr);
 	}
 
 
@@ -96,7 +101,7 @@ public class JwtAuthenticationController {
 		String r = signedHash.substring(0, 66);
 		String s = "0x" + signedHash.substring(66, 130);
 		String v = "0x" + signedHash.substring(130, 132);
-
+		
 		String pubkey = Sign.signedPrefixedMessageToKey(originalMessage.getBytes(), new Sign.SignatureData(
 				Numeric.hexStringToByteArray(v)[0], Numeric.hexStringToByteArray(r), Numeric.hexStringToByteArray(s)))
 				.toString(16);

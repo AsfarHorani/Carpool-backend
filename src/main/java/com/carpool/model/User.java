@@ -5,16 +5,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "wallet")
-public class UserDao {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name="address")
     private String username;
-    @Column
-    @JsonIgnore
-    private String password;
-    
+ 
     @Column
     private long nonce;
     

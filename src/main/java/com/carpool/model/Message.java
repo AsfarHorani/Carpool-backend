@@ -18,11 +18,11 @@ public class Message {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "senderId", nullable = false)
     @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    private UserDao sender;
+    private User sender;
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "receiverId", nullable = false)
     @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    private UserDao receiever;
+    private User receiever;
    
 
 }

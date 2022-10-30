@@ -15,7 +15,7 @@ public class Customer {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "walletId", nullable = false)
     @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    private UserDao wallet;
+    private User wallet;
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDateTime;
     public long getId() {
@@ -34,11 +34,11 @@ public class Customer {
         this.id = id;
     }
 
-    public UserDao getWallet() {
+    public User getWallet() {
         return wallet;
     }
 
-    public void setWallet(UserDao wallet) {
+    public void setWallet(User wallet) {
         this.wallet = wallet;
     }
 

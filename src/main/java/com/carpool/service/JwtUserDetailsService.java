@@ -1,6 +1,6 @@
 package com.carpool.service;
 
-import com.carpool.model.UserDao;
+import com.carpool.model.User;
 import com.carpool.dto.UserDto;
 import com.carpool.repository.UserRepository;
 
@@ -19,12 +19,10 @@ public class JwtUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserRepository userDao;
 
-	@Autowired
-	private PasswordEncoder bcryptEncoder;
-
+    
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserDao user = userDao.findByUsername(username);
+		User user = userDao.findByUsername(username);
 		if (user == null) {
 			throw new UsernameNotFoundException("User not found with username: " + username);
 		}
@@ -32,8 +30,8 @@ public class JwtUserDetailsService implements UserDetailsService {
 				new ArrayList<>());
 	}
 
-	public UserDao save(UserDto user) {
-		UserDao newUser = new UserDao();
+	public User save(UserDto user) {
+		User newUser = new User();
 		Random rand = new Random();
         double n = Math.random()*(999999-100000+1)+100000;
         long noice = Double.doubleToLongBits(n);
