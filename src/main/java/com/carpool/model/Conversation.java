@@ -25,12 +25,37 @@ public class Conversation {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "riderId", nullable = false)
     @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    Rider rider;
+    private Rider rider;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customerId", nullable = false)
     @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-     Customer customer;
+     private Customer customer;
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDateTime;
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public Rider getRider() {
+		return rider;
+	}
+	public void setRider(Rider rider) {
+		this.rider = rider;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	public Date getCreationDateTime() {
+		return creationDateTime;
+	}
+	public void setCreationDateTime(Date creationDateTime) {
+		this.creationDateTime = creationDateTime;
+	}
+    
     
 }
